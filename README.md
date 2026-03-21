@@ -1,5 +1,9 @@
 # UMC 10th Spring Boot
 
+>주차별 미션 업로드 
+
+---
+
 ## 💾 Commit Convention
 
 ### 💬 Commit Message
