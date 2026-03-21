@@ -1,6 +1,6 @@
-## 💾 Commit Convention
+# UMC 10th Spring Boot
 
----
+## 💾 Commit Convention
 
 ### 💬 Commit Message
 
