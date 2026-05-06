@@ -1,9 +1,8 @@
 package com.example.umc10th.domain.review.controller;
 
 import com.example.umc10th.domain.review.dto.ReviewReqDTO;
-import com.example.umc10th.domain.review.dto.ReviewResDTO;
+import com.example.umc10th.domain.review.exception.code.ReviewSuccessCode;
 import com.example.umc10th.domain.review.service.ReviewService;
-import com.example.umc10th.domain.user.exception.code.UserSuccessCode;
 import com.example.umc10th.global.apiPayload.ApiResponse;
 import com.example.umc10th.global.apiPayload.code.BaseSuccessCode;
 import lombok.RequiredArgsConstructor;
@@ -22,9 +21,7 @@ public class ReviewController {
             @PathVariable Long storeId,
             @RequestBody ReviewReqDTO.CreateReview dto
             ){
-        BaseSuccessCode code = UserSuccessCode.OK;
+        BaseSuccessCode code = ReviewSuccessCode.REVIEW_CREATE_SUCCESS;
         return ApiResponse.onSuccess(code, reviewService.createReview(storeId, dto));
     }
-
-
 }

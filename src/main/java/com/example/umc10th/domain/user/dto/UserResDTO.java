@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class UserResDTO {  // server -> client
 
+    // 마이페이지
     @Builder
     public record GetInfo(
             String name,
