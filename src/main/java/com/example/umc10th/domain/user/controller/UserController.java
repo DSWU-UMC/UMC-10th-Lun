@@ -11,26 +11,25 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api")
 public class UserController {
 
     private final UserService userService;
 
     // 마이페이지
-    @PostMapping("/users/me")  // 나중에 GetMapping으로 수정
+    @PostMapping("/api/users/me")  // 나중에 GetMapping으로 수정
     public ApiResponse<UserResDTO.GetInfo> getInfo(
             @RequestBody UserReqDTO.GetInfo dto
     ){
-        BaseSuccessCode code = UserSuccessCode.OK;
+        BaseSuccessCode code = UserSuccessCode.USER_GET_SUCCESS;
         return ApiResponse.onSuccess(code, userService.getInfo(dto));
     }
 
     // 회원가입
-    @PostMapping("/users")
+    @PostMapping("/auth/users")
     public ApiResponse<String> createUser(
             @RequestBody UserReqDTO.CreateUser dto
     ){
-        BaseSuccessCode code = UserSuccessCode.OK;
+        BaseSuccessCode code = UserSuccessCode.USER_CREATE_SUCCESS;
         return ApiResponse.onSuccess(code, userService.createUser(dto));
     }
 

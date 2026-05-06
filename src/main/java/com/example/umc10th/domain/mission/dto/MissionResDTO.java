@@ -1,8 +1,8 @@
 package com.example.umc10th.domain.mission.dto;
 
+import com.example.umc10th.domain.mission.enums.RegionType;
 import lombok.Builder;
 import lombok.Data;
-
 import java.util.List;
 
 @Data
@@ -11,18 +11,9 @@ public class MissionResDTO {
     // 홈 화면
     @Builder
     public record GetHome(
-            Integer successMissionCount,
-            String region,
+            Integer successCount,
+            RegionType region,
             List<MissionInfo> missions
-    ){}
-
-    @Builder
-    public record MissionInfo(
-            String storeName,
-            String foodType,
-            Integer remainingDays,
-            String missionContent,
-            Integer accumulatedPoint
     ){}
 
     // 미션 목록 조회
@@ -31,4 +22,13 @@ public class MissionResDTO {
             List<MissionInfo> missions
     ){}
 
+    // mission 리스트
+    @Builder
+    public record MissionInfo(
+            String storeName,
+            String category,
+            Long remainingDays,
+            String missionContent,
+            Integer accumulatedPoint
+    ){}
 }
