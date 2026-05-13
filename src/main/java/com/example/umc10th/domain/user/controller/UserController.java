@@ -6,6 +6,7 @@ import com.example.umc10th.domain.user.exception.code.UserSuccessCode;
 import com.example.umc10th.domain.user.service.UserService;
 import com.example.umc10th.global.apiPayload.ApiResponse;
 import com.example.umc10th.global.apiPayload.code.BaseSuccessCode;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class UserController {
     // 마이페이지
     @PostMapping("/api/users/me")  // 나중에 GetMapping으로 수정
     public ApiResponse<UserResDTO.GetInfo> getInfo(
-            @RequestBody UserReqDTO.GetInfo dto
+            @RequestBody @Valid UserReqDTO.GetInfo dto
     ){
         BaseSuccessCode code = UserSuccessCode.USER_GET_SUCCESS;
         return ApiResponse.onSuccess(code, userService.getInfo(dto));
@@ -27,7 +28,7 @@ public class UserController {
     // 회원가입
     @PostMapping("/auth/users")
     public ApiResponse<String> createUser(
-            @RequestBody UserReqDTO.CreateUser dto
+            @RequestBody @Valid UserReqDTO.CreateUser dto
     ){
         BaseSuccessCode code = UserSuccessCode.USER_CREATE_SUCCESS;
         return ApiResponse.onSuccess(code, userService.createUser(dto));
