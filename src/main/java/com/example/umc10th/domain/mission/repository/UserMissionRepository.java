@@ -14,7 +14,6 @@ public interface UserMissionRepository extends JpaRepository<UserMission, Long> 
     // 미션 성공 개수
     int countByUserAndSuccess(User userId, boolean b);
 
-
     // 미션 성공
     @Modifying(clearAutomatically = true)
     @Transactional
