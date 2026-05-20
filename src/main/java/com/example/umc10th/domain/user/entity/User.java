@@ -74,4 +74,7 @@ public class User {
     @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<UserFood> userFoodList = new ArrayList<>();
+
+    @Column(name = "password", nullable = false)
+    private String password;
 }
