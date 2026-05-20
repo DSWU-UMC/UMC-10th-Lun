@@ -8,6 +8,7 @@ import com.example.umc10th.domain.user.exception.UserException;
 import com.example.umc10th.domain.user.exception.code.UserErrorCode;
 import com.example.umc10th.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     // 마이페이지
     public UserResDTO.GetInfo getInfo(UserReqDTO.GetInfo dto){
@@ -31,10 +33,13 @@ public class UserService {
 
     // 회원가입
     public String createUser(UserReqDTO.CreateUser dto) {
+        // 비밀번호 BCrypt 솔트처리
+        String encodedPwd = passwordEncoder.encode(dto.password());
+
         // 유저 생성
-        User user = UserConverter.toCreateUser(dto);
+        User user = UserConverter.toCreateUser(dto, encodedPwd);
         userRepository.save(user);
 
-        return user.getName();
+        return "pwd = " + user.getPassword();
     }
 }

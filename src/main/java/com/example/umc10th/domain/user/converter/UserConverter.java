@@ -5,7 +5,6 @@ import com.example.umc10th.domain.user.dto.UserReqDTO;
 import com.example.umc10th.domain.user.dto.UserResDTO;
 import com.example.umc10th.domain.user.entity.User;
 import com.example.umc10th.domain.user.enums.Gender;
-import com.example.umc10th.domain.user.enums.SocialType;
 import java.time.LocalDate;
 
 public class UserConverter {
@@ -24,7 +23,8 @@ public class UserConverter {
 
     // 회원가입
     public static User toCreateUser(
-            UserReqDTO.CreateUser dto
+            UserReqDTO.CreateUser dto,
+            String encodedPwd
     ) {
         return User.builder()
                 .name(dto.name())
@@ -32,7 +32,8 @@ public class UserConverter {
                 .birth(LocalDate.parse(dto.birth()))
                 .region(RegionType.valueOf(dto.region()))
                 .address(dto.address())
-                .socialType(SocialType.valueOf(dto.socialType()))
+                .email(dto.email())
+                .password(encodedPwd)
                 .build();
     }
 }
