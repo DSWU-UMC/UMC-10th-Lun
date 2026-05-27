@@ -1,4 +1,4 @@
-package com.example.umc10th.global.security.handler;
+package com.example.umc10th.global.security.exception;
 
 import com.example.umc10th.global.apiPayload.ApiResponse;
 import com.example.umc10th.global.apiPayload.code.BaseErrorCode;
