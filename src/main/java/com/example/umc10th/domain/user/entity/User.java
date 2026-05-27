@@ -33,18 +33,18 @@ public class User {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "gender", nullable = false)
+    @Column(name = "gender")
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @Column(name = "birth", nullable = false)
+    @Column(name = "birth")
     private LocalDate birth;
 
-    @Column(name = "region", nullable = false)
+    @Column(name = "region")
     @Enumerated(EnumType.STRING)
     private RegionType region;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
 
     @Column(name = "deleted_at")
@@ -71,10 +71,13 @@ public class User {
     @Enumerated(EnumType.STRING)
     private SocialType socialType;
 
+    @Column(name = "social_uid")
+    private String socialUid;
+
     @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<UserFood> userFoodList = new ArrayList<>();
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
 }

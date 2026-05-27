@@ -15,4 +15,10 @@ public class UserResDTO {  // server -> client
             String phone,
             Integer point
     ){}
+
+    // 로그인 성공
+    @Builder
+    public record Login(
+            String accessToken
+    ){}
 }

@@ -43,4 +43,12 @@ public class UserReqDTO { // client -> server
             boolean location,
             boolean marketing
     ){}
+
+    // 로그인
+    public record Login(
+            @NotBlank(message = "이메일은 빈칸일 수 없습니다.")
+            String email,
+            @NotBlank(message = "비밀번호는 빈칸일 수 없습니다.")
+            String password
+    ){}
 }
